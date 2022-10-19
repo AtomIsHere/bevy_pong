@@ -1,5 +1,10 @@
 use bevy::prelude::{Component, Input, Res, Window, Windows};
-use crate::{KeyCode, Query, Transform};
+use crate::{KeyCode, Query, Transform, Vec2};
+
+pub const PLAYER_DIMENSIONS: Vec2 = Vec2 {
+    x: 8.,
+    y: 100.,
+};
 
 #[derive(Component)]
 pub struct Player1 {

@@ -1,10 +1,12 @@
 mod player;
 mod ball;
+mod collision;
 
+use std::f32::consts::PI;
 use bevy::prelude::*;
 use bevy::time::FixedTimestep;
-use crate::player::{Player1, player1_movement_system, Player2, player2_movement_system};
-use crate::ball::{Ball, BallDirection, move_ball_system};
+use crate::player::{Player1, player1_movement_system, Player2, player2_movement_system, PLAYER_DIMENSIONS};
+use crate::ball::{Ball, BALL_SIZE, BallDirection, move_ball_system};
 
 const TIME_STEP: f32 = 1.0 / 60.0;
 
@@ -27,7 +29,7 @@ fn setup(mut commands: Commands) {
 
     let bar_sprite = Sprite {
         color: Color::rgb(1., 1., 1.),
-        custom_size: Some(Vec2::new(8., 50.)),
+        custom_size: Some(PLAYER_DIMENSIONS.clone()),
         ..default()
     };
 
@@ -48,13 +50,13 @@ fn setup(mut commands: Commands) {
     commands.spawn_bundle(SpriteBundle {
         sprite: Sprite {
             color: Color::rgb(1., 1., 1.),
-            custom_size: Some(Vec2::new(8., 8.)),
+            custom_size: Some(Vec2::new(BALL_SIZE, BALL_SIZE)),
             ..default()
         },
         ..default()
     }).insert(Ball {
         movement_speed: 8.
     }).insert(BallDirection {
-        facing: 1.,
+        facing: 180.*(PI/180.),
     });
 }

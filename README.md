@@ -1,0 +1,2 @@
+# Bevy Pong
+A simple game of blazing-ly fast pong coded in Rust using the Bevy game engine. This project was intended as a way for myself to learn how to use rust and the bevy game engine. Bugs may be present but it's not intended for competitive pong gameplay, so I think it will be fine.
